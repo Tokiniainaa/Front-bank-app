@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.Top{
+
+    width: 100%;
+    height: 16vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 6.2%;
+}
+.Top button{
+    width: 20%;
+    height: 50%;
+}
+.btnn.species{
+    background-color: rgb(255, 132, 0);
+    margin-right: 5px;
+    border: none;
+    padding-left: 3%;
+    font-size: medium;
+}
+.AddAccount{
+    border:0.5px solid rgba(0, 0, 0, 0.399);
+    border-radius: 5px;
+    font-size: medium;
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.414);
+    transition: 0.2s;
+}
+.AddAccount:hover{
+    color: rgba(0, 98, 255, 0.844);
+    border-color: rgba(0, 98, 255, 0.809);
+}
+.Bottom{
+    background-color: aqua;
+    width: 100%;
+    height:90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.select{
+    width: 15vw;
+    padding-left: 5%;
+    padding: 4%;
+    border: none;
+    outline: none;
+    margin: 3vh 0 ;
+}
+.bigDash{
+    background-color: blue;
+    width: 100%;
+    height: 70%;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+}
+.bigDash div{
+    background-color: red;
+    width: 40vw;
+    height: 60%;
+    margin-left: 6%;
+    margin-right: 2.5%;
+}
+

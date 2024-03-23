@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.all{
+    width: 100%;
+}
+.date{
+   
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    padding-left: 50%;
+    align-items: center;
+    background-color: rgba(228, 228, 228, 0.639);
+    
+}
+.last{
+    margin-right: 10%;
+    width: 13%;
+    padding-left: 10px;
+    height: 5vh;
+    outline: none;
+    border-radius: 3px;
+    font-size: medium;
+    border-color: rgba(0, 0, 0, 0.225);
+    color: rgba(0, 0, 0, 0.714)
+   
+   
+}
+.sort{
+    display: flex;
+    flex-direction: row;
+    width: 19%;
+    height: 5vh;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    
+}
+.most{
+    padding-left: 13px;
+    width: 79%;
+    height: 50%;
+    border-radius: 3px;
+    font-size: medium;
+    border-color: rgba(0, 0, 0, 0.225);
+    outline: none;
+    color: rgba(0, 0, 0, 0.714)
+}
+.sort p{
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.714)
+
+}
+.transaction{
+
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(228, 228, 228, 0.634);
+    height: 100vh;
+    
+}
+.leftt{
+    width: 17%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 6%;
+    padding-left: 1%;
+    padding-top: 1%;
+    border-radius:6px ;
+    background-color: white;
+}
+.titles{
+    font-size: 27px;
+font-weight: 200px;
+margin-bottom: 25px;
+}
+.leftt button{
+    width: 90%;
+    height: 5vh;
+    background-color: rgb(42, 165, 241);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 400;
+    border-color: transparent;
+    border-radius: 15px;
+    margin-bottom: 10%;
+}
+.leftt input{
+    width: 90%;
+    height: 5vh;
+    border-radius: 5px;
+    border: none;
+    padding-left: 5%;
+    font-size: 15px;
+    margin-bottom: 13%;
+    outline: none;
+
+
+}
+.leftt select{
+    width: 90%;
+    padding-left: 5%;
+    height: 5vh;
+    color: rgba(0, 0, 0, 0.508);
+    font-size: 15px;
+    border: 0.5px rgba(0, 0, 0, 0.168) solid;
+    outline: none;
+}
+.leftt p{
+margin-bottom: 5px;
+font-weight: 600;
+color: rgba(0, 0, 0, 0.73);
+}
+.rightt{
+    background-color:white;
+    height: 10vh;
+    width: 65%;
+    margin-left: 3%;
+    display: flex;
+    flex-direction: row;
+    padding-left: 5px;
+    align-items: center;
+    border-radius: 10px;
+    
+}
+.rightt input{
+  margin-left:2%;
+}
+.rightt label{
+    margin-left: 10px;
+    color: rgba(0, 0, 0, 0.579);
+}
