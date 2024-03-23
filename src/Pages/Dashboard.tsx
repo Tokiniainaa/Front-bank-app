@@ -1,6 +1,7 @@
 import React from "react";
 import "./Dashboard.css";
 import Navigation from "../Components/navigation.tsx";
+import MyChart from "./chart.tsx";
 
 const Dashboard = () => {
   return (
@@ -18,9 +19,20 @@ const Dashboard = () => {
              </select>
              </div>
           <div className="bigDash">
-            <div className="dashboard"></div>
-            <div className="dashboard1"></div>
-            <div className="dashboard2"></div>
+            <div className="dashboard">
+              <h2>Dashboard</h2>
+              <MyChart ></MyChart >
+            </div>
+            <div className="dashboard1">
+              <h2>Sold Evolution</h2>
+              <div>
+                <p className="DAY">TODAY</p>
+                <p className="devise">0 MGA</p>
+              </div>
+            </div>
+            <div className="dashboard2">
+              <h2>Last transaction</h2>
+            </div>
            
           </div>
         </div>
