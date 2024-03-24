@@ -5,27 +5,29 @@
 }
 .main{
     background-color: rgba(128, 128, 128, 0.104);
-    width: 100%;
+    width: 100vw;
     height: 85vh;
     display: flex;
     flex-direction: row;
     padding-top: 2%;
     justify-content: space-around;
+    padding-inline: 3rem;
     
 }
 .account{
-width: 17%;
-height: 80%;
-border-radius: 6px;
-display: flex;
-flex-direction: column;
-align-items: start;
-padding-left: 1%;
-background-color: rgb(251, 249, 249);
+    width: 22vw;
+    height: 80%;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+    align-items: start;
+    /* padding-left: 1%; */
+    background-color: rgb(251, 249, 249);
 }
 .species{
     background-color:white;
-    width: 57%;
+    width: 89%;
     height: 10%;
     border-radius: 6px;
     display: flex;
@@ -45,10 +47,11 @@ margin-bottom: 30px;
 .account button{
     width: 90%;
     height: 5vh;
-    background-color: rgb(42, 165, 241);
+    background-color: rgb(107 152 179);
     display: flex;
     flex-direction: row;
     justify-content: center;
+    color: azure;
     align-items: center;
     font-size: 15px;
     font-weight: 400;
@@ -78,7 +81,7 @@ margin-bottom: 30px;
     outline: none;
 }
 .symbol{
-    width: 15%;
+    width: 24%;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -89,7 +92,7 @@ margin-bottom: 30px;
   
     width: 30%;
     height: 70%;
-    background: url(../Picture/Money-golden-coins-bunch-of-golden-coins-spending-money-dollar_127485_wh860-removebg-preview.png);
+    background: url(../../Picture/Money-golden-coins-bunch-of-golden-coins-spending-money-dollar_127485_wh860-removebg-preview.png);
     background-size: cover;
     background-position: center;
    
@@ -99,4 +102,32 @@ margin-bottom: 30px;
 }
 .value{
     margin-right: 5%;
+}
+.close{
+    z-index: 1;
+    position: absolute;
+    right: 28rem;
+    top: 9rem;
+    cursor: pointer;
+}
+.accountList{
+    display: flex;
+    width: 71vw;
+    flex-direction: column;
+}
+.allAccounts{
+    width: 63vw;
+}
+.accountCont{
+    width: 93%;
+    display: flex;
+    background: #fff;
+    border-radius: 5px;
+    padding-block: 1rem;
+    padding-inline: 2rem;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.accountBalance{
+
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Dashboard.css";
-import Navigation from "../Components/navigation.tsx";
-import MyChart from "./chart.tsx";
+import Navigation from "../../Components/Navigation/navigation.tsx";
+import MyChart from "../chart.tsx";
 
 const Dashboard = () => {
   return (

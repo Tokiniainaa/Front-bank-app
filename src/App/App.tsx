@@ -1,10 +1,9 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Dashboard from "./Pages/Dashboard";
-import Account from "./Pages/Account";
-import Formulaire from "./Pages/Formulaire";
-import Transaction from "./Pages/Transaction";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import Account from "../Pages/Account/Account";
+import Transaction from "../Pages/Transaction/Transaction";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -13,7 +12,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/account" element={<Account />} />
-        <Route path="/formulaire" element={<Formulaire />} />
         <Route path="/transaction" element={<Transaction />} />
       </Routes>
     </>

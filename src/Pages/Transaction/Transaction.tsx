@@ -1,7 +1,6 @@
 import React from "react";
 import "./Transaction.css";
-import Navigation from "../Components/navigation.tsx";
-import { IoAdd } from "react-icons/io5";
+import Navigation from "../../Components/Navigation/navigation.tsx";
 
 
 const Transaction = () => {
@@ -25,7 +24,7 @@ const Transaction = () => {
         <div className="leftt">
         <h3 className="titles">Transactions</h3>
           <button>
-            <IoAdd />
+        
             Add
           </button>
           <input type="search" placeholder="Search" />

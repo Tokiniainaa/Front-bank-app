@@ -84,7 +84,8 @@ margin-bottom: 25px;
 .leftt button{
     width: 90%;
     height: 5vh;
-    background-color: rgb(42, 165, 241);
+    background-color: rgb(107 152 179);
+    color: azure;
     display: flex;
     flex-direction: row;
     justify-content: center;
