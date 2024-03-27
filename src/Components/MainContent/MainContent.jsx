@@ -22,7 +22,25 @@ const MainContent = ({ activeMenu }) => {
     };
 
     return (
-        <Box w="79vw" h="100vh">
+        <Box 
+        w="79vw" 
+        h="100vh" 
+        maxH="100vh" 
+        overflow={"auto"}
+        __css={{
+            '&::-webkit-scrollbar': {
+              display: 'none',
+            },
+            '&::-ms-scrollbar': {
+              display: 'none',
+            },
+            '&::-webkit-scrollbar-track': {
+              display: 'none',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              display: 'none',
+            },
+          }}>
             {getContent()}
         </Box>
     );
