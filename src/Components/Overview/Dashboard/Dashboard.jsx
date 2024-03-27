@@ -6,7 +6,7 @@ import AddButton from "../../AddButton/AddButton"
 const Dashboard = () => {
     return(
         <Box w="65%" h="100%" borderRight="1px solid" borderColor="#dbdbdb" p={6}>
-            <Text>
+            <Text fontSize="xl">
                 Overview
             </Text>
             <AddButton title={"Add new account"} name={"Add new account"}></AddButton>
