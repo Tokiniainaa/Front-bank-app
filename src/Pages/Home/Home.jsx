@@ -13,7 +13,7 @@ const Home = () => {
     return (
         <Flex direction="row" h="100vh">
             <Menu onMenuItemClick={handleMenuItemClick} />
-            <MainContent activeMenu={activeMenu} />
+            <MainContent activeMenu={activeMenu}/>
         </Flex>
     );
 };
