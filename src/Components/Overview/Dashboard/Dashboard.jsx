@@ -1,6 +1,7 @@
 import { Box, Text } from "@chakra-ui/react"
 import Mock from "../../../mock.json"
 import AccountsContainer from "./AccountsContainer/AccountsContainer"
+import AddButton from "../../AddButton/AddButton"
 
 const Dashboard = () => {
     return(
@@ -8,6 +9,7 @@ const Dashboard = () => {
             <Text>
                 Overview
             </Text>
+            <AddButton title={"Add new account"} name={"Add new account"}></AddButton>
             <AccountsContainer accounts={Mock}></AccountsContainer>
         </Box>
     )
