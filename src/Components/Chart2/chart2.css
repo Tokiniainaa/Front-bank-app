@@ -1,0 +1,10 @@
+.radar{
+    width: 90%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.radar-img{
+    height: 100% !important;
+}

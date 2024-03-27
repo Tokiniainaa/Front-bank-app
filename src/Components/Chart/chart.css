@@ -1,0 +1,13 @@
+.analyse{
+    font-size: small;
+    padding-left: 8px;
+}
+.Data{ 
+    display: flex;
+    flex-direction: column;
+    padding-left: 5%;
+}
+.own-agenda{
+    width: 91% !important;
+    margin-bottom: 1rem;
+}
