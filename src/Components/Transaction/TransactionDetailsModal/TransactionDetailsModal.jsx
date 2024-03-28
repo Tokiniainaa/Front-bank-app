@@ -15,6 +15,7 @@ const TransactionDetailsModal = ({ transaction }) => {
           <ModalCloseButton />
           <ModalBody>
             <Text>Reference: {transaction.reference}</Text>
+            <Text>Account n°: {transaction.idAccount}</Text>
             <Text>Action: {transaction.type}</Text>
             <Text>Amount: {transaction.amount} MGA</Text>
             <Text>Status: {transaction.status ? 'Eligible' : 'Not eligible'}</Text>
