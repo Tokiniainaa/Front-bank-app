@@ -1,0 +1,74 @@
+[
+    {
+        "id": "c7816e90-b2cf-4ae1-9cba-0f47d4fe6820",
+        "firstname": "John",
+        "lastname": "Doe",
+        "birthdate": 1025643600000,
+        "monthlyPay": 2000,
+        "balance": 10000,
+        "creditAuthorization": false,
+        "idClient": "a4a2789c-e682-49b2-b553-2fa54cf6be89",
+        "idBank": 0,
+        "name": "BMOI"
+    },
+    {
+        "id": "54310684-a953-4946-bc4a-8229547e9ec1",
+        "firstname": "Jamie",
+        "lastname": "Smith",
+        "birthdate": 1025643600000,
+        "monthlyPay": 2000,
+        "balance": 8000,
+        "creditAuthorization": false,
+        "idClient": "a6256720-1b99-4ed0-a7ed-390fdfa44779",
+        "idBank": 0,
+        "name": "BMOI"
+    },
+    {
+        "id": "543f0684-a953-4946-bc4a-8229547e9ec1",
+        "firstname": "Paht",
+        "lastname": "Smith",
+        "birthdate": 1025643600000,
+        "monthlyPay": 2000,
+        "balance": 8000,
+        "creditAuthorization": false,
+        "idClient": "a6256720-1b99-4ed0-a7ed-390fdfa44779",
+        "idBank": 0,
+        "name": "BMOI"
+    },
+    {
+        "id": "54310684-as53-4946-bc4a-8229547e9ec1",
+        "firstname": "Jane",
+        "lastname": "Smith",
+        "birthdate": 1025643600000,
+        "monthlyPay": 2000,
+        "balance": 8000,
+        "creditAuthorization": false,
+        "idClient": "a6256720-1b99-4ed0-a7ed-390fdfa44779",
+        "idBank": 0,
+        "name": "BMOI"
+    },
+    {
+        "id": "543106g4-a953-4946-bc4a-8229547e9ec1",
+        "firstname": "Mash",
+        "lastname": "Smith",
+        "birthdate": 1025643600000,
+        "monthlyPay": 2000,
+        "balance": 8000,
+        "creditAuthorization": false,
+        "idClient": "a6256720-1b99-4ed0-a7ed-390fdfa44779",
+        "idBank": 0,
+        "name": "BMOI"
+    },
+    {
+        "id": "54h10684-a953-4946-bc4a-8229547e9ec1",
+        "firstname": "Peter",
+        "lastname": "Smith",
+        "birthdate": 1025643600000,
+        "monthlyPay": 2000,
+        "balance": 8000,
+        "creditAuthorization": false,
+        "idClient": "a6256720-1b99-4ed0-a7ed-390fdfa44779",
+        "idBank": 0,
+        "name": "BMOI"
+    }
+]

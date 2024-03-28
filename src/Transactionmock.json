@@ -1,0 +1,68 @@
+[
+    {
+        "id": 10,
+        "type": "Outgoing",
+        "description": "Debited account",
+        "registrationDate": [
+            2024,
+            3,
+            27
+        ],
+        "effectiveDate": [
+            2024,
+            3,
+            27
+        ],
+        "amount": 1000,
+        "status": true,
+        "reference": "VIR_2024_03_27_25",
+        "idCategory": 1,
+        "idAccount": "54310684-a953-4946-bc4a-8229547e9ec1",
+        "label": "Acheter à manger",
+        "situation": "SUCCESS"
+    },
+    {
+        "id": 11,
+        "type": "Outgoing",
+        "description": "Debited account",
+        "registrationDate": [
+            2024,
+            3,
+            27
+        ],
+        "effectiveDate": [
+            2024,
+            3,
+            27
+        ],
+        "amount": 1000,
+        "status": true,
+        "reference": "VIR_2024_03_27_59",
+        "idCategory": 1,
+        "idAccount": "54310684-a953-4946-bc4a-8229547e9ec1",
+        "label": "Acheter un hamburger",
+        "situation": "CANCELED"
+    },
+    {
+        "id": 11,
+        "type": "Outgoing",
+        "description": "Debited account",
+        "registrationDate": [
+            2024,
+            3,
+            27
+        ],
+        "effectiveDate": [
+            2024,
+            3,
+            27
+        ],
+        "amount": 30000,
+        "status": true,
+        "reference": "VIR_2024_03_27_59",
+        "idCategory": 1,
+        "idAccount": "54310684-a953-4946-bc4a-8229547e9ec1",
+        "label": "Acheter une makoko",
+        "situation": "PENDING"
+    }
+]
