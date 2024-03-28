@@ -5,6 +5,7 @@ const TransactionCard = ({ transaction, onOpen }) => {
  return (
     <Box borderWidth="1px" borderRadius="lg" overflow="hidden" p={4} m={2}  onClick={onOpen}
     cursor="pointer"
+    _hover={{bg: "gray.100"}}
     >
       <Text fontSize="xl">{transaction.label}</Text>
       <Text fontSize="md">{transaction.type}</Text>
