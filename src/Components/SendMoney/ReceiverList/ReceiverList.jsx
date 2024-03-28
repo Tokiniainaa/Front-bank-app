@@ -3,7 +3,7 @@ import { Box, IconButton, HStack, Text, Image, Flex } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import Avatar from "../../../pictures/avatar.png"
 
-const ReceiverList = ({ accounts }) => {
+const ReceiverList = ({ accounts, handleReceiver }) => {
  const [currentIndex, setCurrentIndex] = useState(0);
  const carouselRef = useRef(null);
 
@@ -56,7 +56,7 @@ const ReceiverList = ({ accounts }) => {
         }}
       >
         {accounts.map((account, index) => (
-          <Box key={account.id} mx={2}>
+          <Box key={account.id} mx={2} cursor={'pointer'} onClick={()=>handleReceiver(account)}>
                 <Image 
                     src={Avatar}
                     alt="receiver image"
