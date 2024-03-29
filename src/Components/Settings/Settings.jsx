@@ -10,7 +10,7 @@ import { RiSunLine } from "react-icons/ri";
 const Settings = () => {
   return (
     <div className="all">
-      <h1 className="settigns">Settigns</h1>
+      <h1 className="settigns">Settings</h1>
       <p className="can">You can change your information here</p>
       <div className="changeInfo">
         <div className="left">
