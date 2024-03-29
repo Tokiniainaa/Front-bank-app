@@ -1,6 +1,6 @@
-import { Box, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, useDisclosure, Text } from "@chakra-ui/react"
+import { Box, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, useDisclosure } from "@chakra-ui/react"
 
-const AddButton = ({ name ,title}) => {
+const AddButton = ({ name ,title, form}) => {
 const { isOpen, onOpen, onClose } = useDisclosure();
     return(
         <>
@@ -9,11 +9,11 @@ const { isOpen, onOpen, onClose } = useDisclosure();
             </Box>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
-                <ModalContent>
+                <ModalContent p={3}>
                   <ModalHeader>{title}</ModalHeader>
                   <ModalCloseButton />
                   <ModalBody>
-                    <Text>Form here</Text>
+                    {form}
                   </ModalBody>
                 </ModalContent>
             </Modal>
