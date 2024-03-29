@@ -7,7 +7,7 @@ import { FaBirthdayCake, FaUser, FaMoneyBillWave, FaInfoCircle } from 'react-ico
 
 const Profil = () => {
     return (
-        <Box w="35%" h="100%" p={4}>
+        <Box w="31%" h="100%" p={4}>
             <Flex direction="row" justifyContent="flex-end" gap={5}>
                 <Popover>
                     <PopoverTrigger>
