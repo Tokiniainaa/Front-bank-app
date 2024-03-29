@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Box, IconButton, HStack, Text } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 
-const AccountsContainer = ({ accounts }) => {
+const AccountsContainer = ({ accounts, handleAccountClicked }) => {
  const [currentIndex, setCurrentIndex] = useState(0);
  const carouselRef = useRef(null);
 
@@ -42,7 +42,7 @@ const AccountsContainer = ({ accounts }) => {
         }}
       >
         {accounts.map((account, index) => (
-          <Box key={account.id} padding={4} borderRadius="md" bg="white" boxShadow="md" h="20ch" minWidth="200px">
+          <Box key={account.id} padding={4} borderRadius="md" bg="white" boxShadow="md" h="20ch" minWidth="200px" onClick={()=>handleAccountClicked(account)}>
             <Text fontSize="lg" fontWeight="bold">{account.name}</Text>
             <Text>Balance: {account.balance}</Text>
           </Box>
