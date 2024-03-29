@@ -1,0 +1,26 @@
+[
+    {
+        "effectiveDate": [
+            2024,
+            3,
+            28
+        ],
+        "reference": "VIR_2024_03_28_58",
+        "motif": "Receive transfer: salary",
+        "creditMGA": 1000.0,
+        "debitMGA": 0.0,
+        "balance": 13000.0
+    },
+    {
+        "effectiveDate": [
+            2024,
+            3,
+            29
+        ],
+        "reference": "VIR_2024_03_29_21",
+        "motif": "Receive transfer: charges",
+        "creditMGA": 2000.0,
+        "debitMGA": 0.0,
+        "balance": 13000.0
+    }
+]
