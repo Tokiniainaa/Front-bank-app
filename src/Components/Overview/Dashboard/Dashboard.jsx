@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text,Flex ,Input,Button} from "@chakra-ui/react";
 import Mock from "../../../mock.json";
 import AccountsContainer from "./AccountsContainer/AccountsContainer";
 import AddButton from "../../AddButton/AddButton";
 import statement from "../../../statement.json";
 import DataTable from "./Datatable/DataTable";
 import NewAccountForm from "./NewAccountForm/NewAccountForm";
+import Chart from "../../../Components/Chart/chart"
 
 const Dashboard = () => {
     const [id, setId] = useState(null)
@@ -74,6 +75,25 @@ const Dashboard = () => {
       <AddButton title={"Add new account"} name={"Add new account"} form={<NewAccountForm />}></AddButton>
       <AccountsContainer handleAccountClicked={handleAccountClicked} accounts={Mock}></AccountsContainer>
       <DataTable columns={columns} data={statement} />
+      <Flex bg={"white"} flexDirection={"column"} w={"90%"} h={"30%"} margin={"0 auto"} padding={"3% 3%"}>
+      <Flex >
+        <Box w={"50%"}>
+          <Text fontSize={"12px"} fontWeight={"700"} marginBottom={"2%"}>
+            Start Date
+          </Text >
+          <Input type="date" w={"95%"} fontSize={"12px"} fontWeight={"600"}></Input>
+        </Box>
+        <Box w={"50%"}> 
+          <Text fontSize={"12px"} fontWeight={"700"} marginBottom={"2%"}>
+            End Date
+          </Text>
+          <Input type="date" w={"95%"} fontSize={"12px"} fontWeight={"600"}></Input>
+        </Box>
+      </Flex>
+      <Button w={"13%"} h={"17%"} fontSize={"13px"} fontWeight={"700"} marginTop={"4%"} bg={"#090d1e"} color={"white"}> Apply</Button>
+      </Flex>
+      <Chart/>
+     
     </Box>
  );
 };
