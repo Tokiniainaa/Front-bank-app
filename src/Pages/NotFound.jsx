@@ -1,6 +1,6 @@
 import React from "react";
 import Lottie from 'react-lottie';
-import { Icon,Box,Text,Flex,Input,Button } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import animationData from "../lotties/Animation - 1711786703527.json"
 
 const NotFound = ()=>{
