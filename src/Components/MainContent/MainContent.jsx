@@ -15,7 +15,7 @@ const MainContent = ({ activeMenu }) => {
             case 3:
                 return <SendMoney />;
             case 4:
-                return <Settings />;
+                return <Settings/>;
             default:
                 return <Overview />;
         }
