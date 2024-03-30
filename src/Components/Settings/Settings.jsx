@@ -4,9 +4,6 @@ import { BellIcon, EmailIcon } from "@chakra-ui/icons";
 import { FaUser } from "react-icons/fa";
 import { RiSunLine } from "react-icons/ri";
 
-
-
-
 const Settings = () => {
   return (
     <Box bg="rgb(244, 243, 243)" paddingLeft="5%"  paddingTop="2%" w="100%" h="100%">
