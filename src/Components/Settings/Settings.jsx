@@ -3,7 +3,7 @@ import { Icon,Box,Text,Flex,Input,Button } from "@chakra-ui/react";
 import { BellIcon, EmailIcon } from "@chakra-ui/icons";
 import { FaUser } from "react-icons/fa";
 import { RiSunLine } from "react-icons/ri";
-import "./Settings.css";
+
 
 
 
