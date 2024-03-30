@@ -9,7 +9,6 @@ const Home = () => {
     const handleMenuItemClick = (id) => {
         setActiveMenu(id);
     };
-
     return (
         <Flex direction="row" h="100vh">
             <Menu onMenuItemClick={handleMenuItemClick} />
