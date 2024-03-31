@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Text,Flex ,Input,Button} from "@chakra-ui/react";
+import { Box, Text,Flex ,Input } from "@chakra-ui/react";
 import Mock from "../../../mock.json";
 import AccountsContainer from "./AccountsContainer/AccountsContainer";
 import AddButton from "../../AddButton/AddButton";
@@ -9,12 +9,44 @@ import NewAccountForm from "./NewAccountForm/NewAccountForm";
 import axios from "axios";
 import data from "../../../clientInfo.json"
 import Chart from "../../../Components/Chart/chart"
+import { useForm } from 'react-hook-form';
+
 
 const Dashboard = () => {
     const [id, setId] = useState(null)
     const baseUrl = process.env.REACT_APP_BASE_URL;
     const clientId = data.id_client;
     const [allAccount, setAllAccount] = useState()
+    const [statementValues, setStatementValues] = useState();
+
+    const { register, getValues } = useForm({
+      defaultValues: {
+        startDate: new Date(new Date().setDate(new Date().getDate() - 1)).toISOString().split('T')[0], 
+        endDate: new Date().toISOString().split('T')[0],
+      },
+   });
+
+
+   const [chartData, setChartData] = useState({
+    labels: [],
+    datasets: [{
+      data: [],
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)',
+        'red', 
+        'blue',
+        'violet',
+        'azure',
+        'black',
+        'yellow',
+        'pink',
+        'brown'
+      ],
+      hoverOffset: 4
+    }]
+ });
 
     useEffect(()=>{
       const fetchData = async () => {
@@ -26,7 +58,40 @@ const Dashboard = () => {
       fetchData()
   }, [baseUrl, clientId])
 
-  console.log(allAccount)
+  useEffect(()=>{
+    if(id){
+      const fetchData = async () => {
+        const response = await axios.get(`${baseUrl}/getStatement?idAccount=${id}`);
+        if (response){
+            setStatementValues(response.data)
+        }
+    }
+    fetchData()
+    }
+}, [baseUrl, id])
+
+useEffect(() => {
+  if (id) {
+    const fetchData = async () => {
+      const { startDate, endDate } = getValues();
+      const response = await axios.get(`${baseUrl}/categories/sum?startDate=${startDate}&endDate=${endDate}&accountId=${id}`);
+      if (response) {
+        const labels = response.data.map(item => item.category_name);
+        const data = response.data.map(item => item.total_amount);
+
+        setChartData(prevState => ({
+          ...prevState,
+          labels: labels,
+          datasets: [{
+            ...prevState.datasets[0],
+            data: data
+          }]
+        }));
+      }
+    };
+    fetchData();
+  }
+}, [baseUrl, id, getValues]);
 
  const columns = React.useMemo(
     () => [
@@ -60,13 +125,12 @@ const Dashboard = () => {
  );
 
  const handleAccountClicked = (account) => {
-    console.log(account)
     setId(account.id)
  }
 
  useEffect(()=>{
     if(id){
-        console.log(id)
+        //console.log(id)
     }
  }, [id])
 
@@ -94,25 +158,35 @@ const Dashboard = () => {
       {allAccount ? (
         <AccountsContainer handleAccountClicked={handleAccountClicked} accounts={allAccount}></AccountsContainer>
       ) : <AccountsContainer handleAccountClicked={handleAccountClicked} accounts={Mock}></AccountsContainer>}
-      <DataTable columns={columns} data={statement} />
+      <Text> Account statement </Text>
+      {statementValues ? (
+        <>
+          <DataTable columns={columns} data={statementValues} />
+        </>
+      ) : 
+        <>
+          <DataTable columns={columns} data={statement} />
+        </>
+      }
+
+      <Chart datas={ chartData } />
+      
       <Flex bg={"white"} flexDirection={"column"} w={"90%"} h={"30%"} margin={"0 auto"} padding={"3% 3%"}>
-      <Flex >
-        <Box w={"50%"}>
-          <Text fontSize={"12px"} fontWeight={"700"} marginBottom={"2%"}>
-            Start Date
-          </Text >
-          <Input type="date" w={"95%"} fontSize={"12px"} fontWeight={"600"}></Input>
-        </Box>
-        <Box w={"50%"}> 
-          <Text fontSize={"12px"} fontWeight={"700"} marginBottom={"2%"}>
-            End Date
-          </Text>
-          <Input type="date" w={"95%"} fontSize={"12px"} fontWeight={"600"}></Input>
-        </Box>
+        <Flex >
+          <Box w={"50%"}>
+            <Text fontSize={"12px"} fontWeight={"700"} marginBottom={"2%"}>
+              Start Date
+            </Text>
+            <Input type="date" w={"95%"} fontSize={"12px"} fontWeight={"600"} {...register("startDate")} />
+          </Box>
+          <Box w={"50%"}>
+            <Text fontSize={"12px"} fontWeight={"700"} marginBottom={"2%"}>
+              End Date
+            </Text>
+            <Input type="date" w={"95%"} fontSize={"12px"} fontWeight={"600"} {...register("endDate")} />
+          </Box>
+        </Flex>
       </Flex>
-      <Button w={"13%"} h={"17%"} fontSize={"13px"} fontWeight={"700"} marginTop={"4%"} bg={"#090d1e"} color={"white"}> Apply</Button>
-      </Flex>
-      <Chart/>
      
     </Box>
  );
