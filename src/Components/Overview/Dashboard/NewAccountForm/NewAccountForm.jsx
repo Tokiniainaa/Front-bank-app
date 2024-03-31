@@ -1,17 +1,51 @@
-import React, { useEffect } from "react";
+import React, { useState ,useEffect } from "react";
 import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack, Select } from "@chakra-ui/react";
 import { useForm, Controller } from "react-hook-form";
 import bank from "../../../../bank.json";
+import data from "../../../../clientInfo.json"
+import axios from "axios"
 
-const NewAccountForm = ({ idAccount }) => {
-    const { register, handleSubmit, setValue, control } = useForm();
+const NewAccountForm = ( ) => {
+    const [banks, setBanks] = useState()
+    const { register, handleSubmit, setValue, control, reset, getValues } = useForm({
+        defaultValues: {
+            idBank: '',
+        }
+    });
+    const baseUrl = process.env.REACT_APP_BASE_URL;
+    const idClient = data.id_client;
+
+    useEffect(()=> {
+        const fetchData = async  () => {
+            const response = await axios.get(`${baseUrl}/bank/all`)
+            if (response.data){
+                setBanks(response.data)
+                reset({
+                    ...getValues(),
+                    idBank: response.data[0].id
+                })
+            }
+        }
+        fetchData()
+    }, [baseUrl, reset, getValues])
 
     useEffect(() => {
-        setValue("idAccount", idAccount);
-    }, [setValue, idAccount]);
+        setValue("idClient", idClient);
+        
+    }, [setValue, idClient]);
 
     const onSubmit = (data) => {
-        console.log(data);
+        try{
+            const response = axios.post(`${baseUrl}/account/new`, {
+                balance: data.balance,
+                idClient: data.idClient,
+                idBank: data.idBank,
+                name: data.name
+            })
+            console.log(response)
+        }catch(error){
+            console.log(error)
+        }
     };
 
     return (
@@ -58,11 +92,23 @@ const NewAccountForm = ({ idAccount }) => {
                                     },
                                 }}
                             >
-                                {bank.map((bank) => (
-                                    <option key={bank.id} value={bank.id}>
-                                        {bank.name}
-                                    </option>
-                                ))}
+                                {banks ? (
+                                    <>
+                                        {banks.map((bank) => (
+                                        <option key={bank.id} value={bank.id}>
+                                            {bank.name}
+                                        </option>
+                                        ))}
+                                    </>
+                                ) : (
+                                    <>
+                                        {bank.map((bank) => (
+                                        <option key={bank.id} value={bank.id}>
+                                            {bank.name}
+                                        </option>
+                                        ))}
+                                    </>
+                                )}
                             </Select>
                         )}
                     />
