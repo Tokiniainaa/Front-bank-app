@@ -11,8 +11,7 @@ import {
  Button,
  Select,
  Box,
- Flex,
- Text
+ Flex
 } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 
@@ -53,7 +52,7 @@ function DataTable({ columns, data }) {
         placeholder="Search..."
         mb={4}
       />
-      <Table {...getTableProps()} variant="simple" size="md">
+      <Table {...getTableProps()} variant="simple" width="full" size="sm">
         <Thead>
           {headerGroups.map(headerGroup => (
             <Tr {...headerGroup.getHeaderGroupProps()}>
