@@ -12,12 +12,12 @@ import data from "../../../clientInfo.json"
 const Dashboard = () => {
     const [id, setId] = useState(null)
     const baseUrl = process.env.REACT_APP_BASE_URL;
-    const clientId = "a4a2789c-e682-49b2-b553-2fa54cf6be89";
+    const clientId = data.id_client;
     const [allAccount, setAllAccount] = useState()
 
     useEffect(()=>{
       const fetchData = async () => {
-          const response = await axios.get(`http://localhost:8080/account/${clientId}`);
+          const response = await axios.get(`${baseUrl}/account/${clientId}`);
           if (response){
               setAllAccount(response.data)
           }
@@ -90,7 +90,9 @@ const Dashboard = () => {
         Overview
       </Text>
       <AddButton title={"Add new account"} name={"Add new account"} form={<NewAccountForm />}></AddButton>
-      <AccountsContainer handleAccountClicked={handleAccountClicked} accounts={Mock}></AccountsContainer>
+      {allAccount ? (
+        <AccountsContainer handleAccountClicked={handleAccountClicked} accounts={allAccount}></AccountsContainer>
+      ) : <AccountsContainer handleAccountClicked={handleAccountClicked} accounts={Mock}></AccountsContainer>}
       <DataTable columns={columns} data={statement} />
     </Box>
  );
