@@ -66,7 +66,7 @@ const ReceiverList = ({ accounts, handleReceiver }) => {
                 ></Image>
                 <Flex gap={2}>
                     <Text>{account.firstname}</Text>
-                    <Text>{account.lastname}</Text>
+                    <Text>{account.lastname} ({account.name})</Text>
                 </Flex>
           </Box>
         ))}

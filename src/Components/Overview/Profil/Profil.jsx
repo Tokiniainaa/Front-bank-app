@@ -1,11 +1,27 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Box, Image, Text, Flex, Icon, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverCloseButton, PopoverHeader, PopoverBody, VStack } from "@chakra-ui/react";
 import Avatar from "../../../pictures/avatar.png";
 import { BellIcon, EmailIcon } from "@chakra-ui/icons";
 import ProfileInfo from './ProfilInfo/ProfilInfo';
 import { FaBirthdayCake, FaUser, FaMoneyBillWave, FaInfoCircle } from 'react-icons/fa';
+import axios from "axios"
+import data from "../../../clientInfo.json"
 
 const Profil = () => {
+    const [clientData, setClientData] = useState();
+    const baseUrl = process.env.REACT_APP_BASE_URL;
+    const clientId = data.id_client;
+
+    useEffect(()=>{
+        const fetchData = async () => {
+            const response = await axios.get(`${baseUrl}/client/${clientId}`);
+            if (response){
+                setClientData(response.data)
+            }
+        }
+        fetchData()
+    }, [baseUrl, clientId])
+
     return (
         <Box w="31%" h="100%" p={4}>
             <Flex direction="row" justifyContent="flex-end" gap={5}>
@@ -44,11 +60,22 @@ const Profil = () => {
                     boxSize="100px"
                     mx="auto"
                 ></Image>
-                <VStack marginLeft={7} spacing={4} align={"stretch"} marginTop={12}>
-                    <ProfileInfo title="Name" value="John Doe" IconComponent={FaUser}/>
-                    <ProfileInfo title="Birthdate" value="02-12-02" IconComponent={FaBirthdayCake}/>
-                    <ProfileInfo title="Salary" value="300000 MGA" IconComponent={FaMoneyBillWave}/>
-                    <ProfileInfo title="Account number" value="xxxx-xxxx-xxxx-xxxx" IconComponent={FaInfoCircle}/>
+                <VStack marginLeft={4} spacing={4} align={"stretch"} marginTop={12}>
+                    {clientData ? (
+                        <>
+                        <ProfileInfo title="Name" value={clientData.firstname + " " + clientData.lastname} IconComponent={FaUser}/>
+                        <ProfileInfo title="Birthdate" value={clientData.birthdate} IconComponent={FaBirthdayCake}/>
+                        <ProfileInfo title="Salary" value={ clientData.monthlyPay + " MGA"} IconComponent={FaMoneyBillWave}/>
+                        <ProfileInfo title="Client n°" value={ clientData.id } IconComponent={FaInfoCircle}/>
+                        </>
+                    ) : (
+                        <>
+                        <ProfileInfo title="Name" value={"John Doe"} IconComponent={FaUser}/>
+                        <ProfileInfo title="Birthdate" value={"02 Juin 1998"} IconComponent={FaBirthdayCake}/>
+                        <ProfileInfo title="Salary" value={ "30000 MGA"} IconComponent={FaMoneyBillWave}/>
+                        <ProfileInfo title="Client n°" value={ "xxxx-xxxx-xxx-xxx-xxx" } IconComponent={FaInfoCircle}/>
+                        </>
+                    )}
                 </VStack>
             </Box>
         </Box>
