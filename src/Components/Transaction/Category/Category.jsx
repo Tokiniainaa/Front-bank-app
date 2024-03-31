@@ -2,7 +2,6 @@ const Category = [
     'Food_and_Drinks',
     'Online_Shopping',
     'Housing',
-    'Transportation',
     'Vehicle',
     'Leisure',
     'Multimedia_and_Computers',
