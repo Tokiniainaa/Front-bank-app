@@ -1,13 +1,15 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
-import { Text, Box } from "@chakra-ui/react";
+import { Text, Box, Flex } from "@chakra-ui/react";
 import 'chart.js/auto';
 
 const Chart = ({ datas }) => (
-    <Box marginInline="auto" w="fit-content"> 
-        <Text textAlign="center" >Growth Analyse </Text> 
-        <Box mx="auto">
-            <Pie  data={datas}  />
+    <Box marginTop={4}>
+        <Text textAlign={'left'}>Growth Analyse </Text> 
+        <Box marginInline="auto" marginBlock={2} w="25vw"> 
+            <Flex direction="column" justifyContent="center" alignItems="center">
+                <Pie data={datas}  />
+            </Flex>
         </Box>
     </Box>
 );
