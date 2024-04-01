@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react"
 import { Box, Text } from "@chakra-ui/react"
 import ReceiverList from "../ReceiverList/ReceiverList"
 import AccountMock from "../../../AccountMock.json"
-import Mock from "../../../mock.json"
 import data from "../../../clientInfo.json"
 import axios from "axios"
 
 const ReceiverContainer = ({ handleReceiverMethod }) => {
-    const balances = Mock.map(item => parseInt(item.balance));
     const baseUrl = process.env.REACT_APP_BASE_URL;
     const clientId = data.id_client;
     const [receivers, setReceivers] = useState()
     const [ownAccounts, setOwnAccounts] = useState()
     const [balance, setBalance] = useState(0)
+    const [filteredReceivers, setFilteredReceivers] = useState([]);
+
 
     useEffect(()=>{
         const fetchData = async () => {
@@ -23,6 +23,15 @@ const ReceiverContainer = ({ handleReceiverMethod }) => {
         }
         fetchData()
     }, [baseUrl])
+
+
+    useEffect(() => {
+        if(receivers){
+            const filtered = receivers.filter(receiver => receiver.idClient !== clientId);
+        setFilteredReceivers(filtered);
+        }
+     }, [clientId, receivers]);
+
 
     useEffect(()=>{
         const fetchData = async () => {
@@ -38,8 +47,6 @@ const ReceiverContainer = ({ handleReceiverMethod }) => {
         }
     }, [baseUrl, clientId, ownAccounts])
 
-    const totalBalance = balances.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-
     return(
         <Box w="65%" h="100%" borderRight="1px solid" borderColor="#dbdbdb" p={6}>
             <Box w="100%" borderRadius={7} bg="currentcolor" p={7}>
@@ -52,7 +59,7 @@ const ReceiverContainer = ({ handleReceiverMethod }) => {
                 ) : (
                     <>
                         <Text fontSize="xl" color="#fff">
-                            {totalBalance} MGA
+                            {balance} MGA
                         </Text>
                     </>
                 )}
@@ -60,7 +67,7 @@ const ReceiverContainer = ({ handleReceiverMethod }) => {
             </Box>
             <Text fontWeight = "bold" paddingTop={4}>Choose receiver</Text>
             {receivers ? (
-                <ReceiverList accounts={receivers} handleReceiver={handleReceiverMethod}></ReceiverList>
+                <ReceiverList accounts={filteredReceivers} handleReceiver={handleReceiverMethod}></ReceiverList>
             ) : (
                 <ReceiverList accounts={AccountMock} handleReceiver={handleReceiverMethod}></ReceiverList>
             )}
