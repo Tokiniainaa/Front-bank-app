@@ -9,6 +9,7 @@ import data from "../../../clientInfo.json"
 
 const Profil = () => {
     const [clientData, setClientData] = useState();
+    const [birthdates, setBirthdates] = useState()
     const baseUrl = process.env.REACT_APP_BASE_URL;
     const clientId = data.id_client;
 
@@ -21,6 +22,15 @@ const Profil = () => {
         }
         fetchData()
     }, [baseUrl, clientId])
+
+
+    useEffect(()=>{
+        if(clientData){
+            const date = new Date(clientData.birthdate);
+            const formattedDate = date.toISOString().split('T')[0];
+            setBirthdates(formattedDate)
+        }
+    }, [setBirthdates, clientData])
 
     return (
         <Box w="31%" h="100%" p={4}>
@@ -64,7 +74,7 @@ const Profil = () => {
                     {clientData ? (
                         <>
                         <ProfileInfo title="Name" value={clientData.firstname + " " + clientData.lastname} IconComponent={FaUser}/>
-                        <ProfileInfo title="Birthdate" value={clientData.birthdate} IconComponent={FaBirthdayCake}/>
+                        <ProfileInfo title="Birthdate" value={birthdates} IconComponent={FaBirthdayCake}/>
                         <ProfileInfo title="Salary" value={ clientData.monthlyPay + " MGA"} IconComponent={FaMoneyBillWave}/>
                         <ProfileInfo title="Client n°" value={ clientData.id } IconComponent={FaInfoCircle}/>
                         </>
