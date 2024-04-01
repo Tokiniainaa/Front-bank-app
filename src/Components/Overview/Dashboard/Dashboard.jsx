@@ -10,6 +10,7 @@ import axios from "axios";
 import data from "../../../clientInfo.json"
 import Chart from "../../../Components/Chart/chart"
 import { useForm } from 'react-hook-form';
+import LoanForm from "./LoanForm/LoanForm";
 
 
 const Dashboard = () => {
@@ -18,6 +19,8 @@ const Dashboard = () => {
     const clientId = data.id_client;
     const [allAccount, setAllAccount] = useState()
     const [statementValues, setStatementValues] = useState();
+    const [accountClicked, setAccountClicked] = useState()
+    const [accountInterest, setAccountInterest] = useState()
 
     const { register, getValues } = useForm({
       defaultValues: {
@@ -70,6 +73,18 @@ const Dashboard = () => {
     }
 }, [baseUrl, id])
 
+useEffect(()=>{
+  if(id){
+    const fetchData = async () => {
+      const response = await axios.get(`${baseUrl}/account/accountInterest?id=${id}`);
+      if (response){
+          setAccountInterest(response.data)
+      }
+  }
+  fetchData()
+  }
+}, [baseUrl, id])
+
 useEffect(() => {
   if (id) {
     const fetchData = async () => {
@@ -92,6 +107,7 @@ useEffect(() => {
     fetchData();
   }
 }, [baseUrl, id, getValues]);
+
 
  const columns = React.useMemo(
     () => [
@@ -126,6 +142,7 @@ useEffect(() => {
 
  const handleAccountClicked = (account) => {
     setId(account.id)
+    setAccountClicked(account)
  }
 
  useEffect(()=>{
@@ -158,7 +175,22 @@ useEffect(() => {
       {allAccount ? (
         <AccountsContainer handleAccountClicked={handleAccountClicked} accounts={allAccount}></AccountsContainer>
       ) : <AccountsContainer handleAccountClicked={handleAccountClicked} accounts={Mock}></AccountsContainer>}
-      <Text> Account statement </Text>
+
+        <Box marginBlock={7}>
+          <Text fontWeight="bold" marginBottom={3}>Account information</Text>
+          {accountClicked && (
+          <Text>Total balance: {accountClicked?.balance} MGA</Text>
+          )}
+          {accountInterest && (
+            <>
+              <Text>Emprunt: { accountInterest.actualDue === 0 ? accountInterest.firstDue : accountInterest.actualDue} MGA</Text>
+              <Text>Interest rate: {accountInterest.counts * 100} %</Text>
+            </>
+          )}
+          <AddButton title={"Authorize account to borrow"} name={"Loan authorization"} form={<LoanForm idAccount={id} authorization={accountClicked?.creditAuthorization}/>}></AddButton>
+        </Box>
+
+      <Text fontWeight="bold" marginBottom={4}> Account statement </Text>
       {statementValues ? (
         <>
           <DataTable columns={columns} data={statementValues} />
