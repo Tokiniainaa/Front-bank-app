@@ -45,7 +45,7 @@ function DataTable({ columns, data }) {
  );
 
  return (
-    <Box>
+    <Box marginBottom={13}>
       <Input
         value={state.globalFilter || ''}
         onChange={e => setGlobalFilter(e.target.value || undefined)}
