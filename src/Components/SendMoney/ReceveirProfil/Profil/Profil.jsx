@@ -3,7 +3,6 @@ import Avatar from "../../../../pictures/avatar.png"
 import TransferForm from "../TransferForm/TransferForm";
 
 const Profil = ({ receiver }) => {
-    const idAccountDebited = "xxxx-xxxx-xxxx-xxxx";
     return(
         <Box p={4}>
             <Box marginTop={4} marginBottom={6}>
@@ -24,7 +23,7 @@ const Profil = ({ receiver }) => {
                 </Box>
             </Box>
             <Text fontWeight="bold" marginBottom={4}> Payment details </Text>
-            <TransferForm idAccountCredited={receiver.id} idAccountDebited={idAccountDebited} />
+            <TransferForm idAccountCredited={receiver.id} />
         </Box>
     )
 }
