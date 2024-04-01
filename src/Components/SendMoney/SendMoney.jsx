@@ -9,7 +9,6 @@ const SendMoney = () => {
     const handleReceiverMethod = (receiver) => {
         setReceiver(receiver)
     }
-
     return(
         <Flex direction="row" h="100vh">
             <ReceiverContainer handleReceiverMethod={handleReceiverMethod}></ReceiverContainer>
