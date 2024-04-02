@@ -59,6 +59,7 @@ const NewAccountForm = ( ) => {
                         <Input
                             {...register("balance")}
                             placeholder=" "
+                            isRequired
                             outline="none"
                             border="none"
                             borderBottom="2px"
