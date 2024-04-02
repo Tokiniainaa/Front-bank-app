@@ -1,6 +1,6 @@
 # Numeric Bank
 
-This project is about the management of the employee
+This project is about numeric bank
 
 ## Available Scripts
 
