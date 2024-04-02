@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Text,Flex ,Input } from "@chakra-ui/react";
+import { Box, Text,Flex ,Input, Divider } from "@chakra-ui/react";
 import Mock from "../../../mock.json";
 import AccountsContainer from "./AccountsContainer/AccountsContainer";
 import AddButton from "../../AddButton/AddButton";
@@ -11,7 +11,8 @@ import data from "../../../clientInfo.json"
 import Chart from "../../../Components/Chart/chart"
 import { useForm } from 'react-hook-form';
 import LoanForm from "./LoanForm/LoanForm";
-
+import CurveChart from "../../CurveChart/CurveChart";
+import moment from 'moment';
 
 const Dashboard = () => {
     const [id, setId] = useState(null)
@@ -29,6 +30,7 @@ const Dashboard = () => {
       },
    });
 
+   const [chartLineData,setChartLineData] = useState()
 
    const [chartData, setChartData] = useState({
     labels: [],
@@ -91,8 +93,8 @@ useEffect(() => {
       const { startDate, endDate } = getValues();
       const response = await axios.get(`${baseUrl}/categories/sum?startDate=${startDate}&endDate=${endDate}&accountId=${id}`);
       if (response) {
-        const labels = response.data.map(item => item.category_name);
-        const data = response.data.map(item => item.total_amount);
+        const labels = response.data.map(item => item.categoryName);
+        const data = response.data.map(item => item.totalAmount);
 
         setChartData(prevState => ({
           ...prevState,
@@ -108,6 +110,19 @@ useEffect(() => {
   }
 }, [baseUrl, id, getValues]);
 
+
+useEffect(() => {
+  if (id) {
+    const fetchData = async () => {
+      const { startDate, endDate } = getValues();
+      const response = await axios.get(`${baseUrl}/transaction/sum?startDate=${startDate}&endDate=${endDate}&accountId=${id}`);
+      if(response){
+        setChartLineData(response.data)
+      }
+    };
+    fetchData();
+  }
+}, [baseUrl, id, getValues]);
 
  const columns = React.useMemo(
     () => [
@@ -219,6 +234,11 @@ useEffect(() => {
           </Box>
         </Flex>
       </Flex>
+      <Divider marginBlock={8}/>
+      <Text fontWeight="bold">Total expense and income</Text>
+      {chartLineData&&(
+        <CurveChart data={chartLineData} ></CurveChart>
+      )}
      
     </Box>
  );
